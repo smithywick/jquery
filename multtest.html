@@ -1,0 +1,85 @@
+<html>
+
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script>
+
+var mult = 0;
+var multString = "";
+var j = 1;
+var i = 1;
+var rowClass = '';
+var colClass = '';
+//loop through each cell and place the value
+for(i=1; i<11; i++){
+	multString +="<tr class='r" + i + "'>";
+	
+	for(j=1; j<11	; j++){
+		mult = i*j;
+		multString +="<td class='c" + j + "'>" + mult + "</td>";
+	}
+	j=1;
+	multString +="</tr>";	
+}
+$(document).ready(function () {
+	if(multString!==''){
+		$("td").hover(function(){
+		colClass = "." + $(this).attr('class');
+			$(colClass).css("color", "white");
+			$(colClass).css("background-color", "black");
+			}, function(){
+			$(colClass).css("color", "black");
+			$(colClass).css("background-color", "white");
+			});
+		$("tr").hover(function(){
+		rowClass = "." + $(this).attr('class');
+			$(rowClass).css("color", "white");
+			$(rowClass).css("background-color", "black");
+			}, function(){
+			$(rowClass).css("color", "black");
+			$(rowClass).css("background-color", "white");
+			});
+	}
+});
+</script>
+
+<style>
+
+.m-table tr td{
+	border-style: solid;
+	
+}
+/*
+.m-table tr td:hover{
+	color:white;
+	background-color: black;	
+}
+*/
+.m-table{
+	border-collapse: collapse;
+}
+
+</style>
+
+</head>
+
+<body>
+
+	<table id="MultiplyTable" class="m-table">
+
+	<script>
+	
+	$("#MultiplyTable").append(multString);
+	
+	</script>
+
+	</table>
+
+<table>
+
+</table>
+
+</body>
+
+</html>
